@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
     <title>Adivinho no número</title>
 </head>
 <body>
@@ -14,8 +15,8 @@
             </div>
         </div>
         <div class="display" id="display-user">
-            <input type="number">
-            <button>ADIVINHAR</button>
+            <input  maxlength="2" placeholder="DIGITE UM NÚMERO" name="attempt"  type="number" id="attempt-input">
+            <button id="submit">ADIVINHAR</button>
             <div id="attempts-historical">
                 <ul>
                     <li>Histórico de tentativas</li>

@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    border: 0;
+    display: flex; /* Usando flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Faz o body ocupar toda a altura da viewport */
+    text-align: center;
+}
+
+.conteiner {
+    width: 80%;
+    height: 80%;
+    background-color: #f5f5f5;
+    box-shadow: 10px 10px 20px #000000;
+    border-radius: 20px;
+}
+
+.display {
+    height: 50%;
+}
+
+#display-system {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#attempts-number {
+    font-size: 75px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#attempts-label {
+    font-size: 20px;
+}
+
+#display-user {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#attempt-input {
+    height: 40px;
+    font-size: 35px;
+    text-align: center;
+}
+
+#submit {
+    height: 30px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#attempts-historical {
+    text-align: left;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
