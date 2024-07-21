@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, request
 from random import randint
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 NUMBER = None
 
-@app.route('/generete', methods=['POST'])
+@app.route('/generate', methods=['POST'])
 def genereteNumber():
     global NUMBER
     number = randint(1, 100)
