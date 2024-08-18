@@ -2,7 +2,7 @@ const getNumber = async () => {
     try{
         const response = await
         fetch(
-            'http://192.168.0.100:5000/generate', {
+            'http://localhost:5000/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ const getNumber = async () => {
 
 async function attemptNumber(number) {
     try {
-        const response = await fetch('http://192.168.0.100:5000/check', {
+        const response = await fetch('http://localhost:5000/check', {
             method: 'POST',
             body: JSON.stringify({ "number": number }),
             headers: {
