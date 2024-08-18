@@ -1,4 +1,6 @@
-const getNumber = async () => {
+getNumber()
+
+async function getNumber() {
     try{
         const response = await
         fetch(
@@ -16,7 +18,7 @@ const getNumber = async () => {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error("Erro ao buscar número:", error);
+        console.error(await response.json());
         return null;
     };
 }
@@ -38,7 +40,7 @@ async function attemptNumber(number) {
         const data = await response.json();
         return data.message;
     } catch (error) {
-        console.error("Erro ao tentar número:", error);
+        console.error(await response.json())
         return null;
     }
 }
@@ -53,8 +55,8 @@ document.getElementById('submit').addEventListener('click', () => {
 
     const data = attemptNumber(number);
     if (data) {
-        let list = document.getElementById('attempts-list');
-        let elementList = document.createElement('li')
+        const list = document.getElementById('attempts-list');
+        const elementList = document.createElement('li')
         elementList.textContent = data
         list.insertBefore(elementList, list.firstChild)
     } else {
