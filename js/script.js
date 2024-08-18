@@ -50,10 +50,10 @@ function getUserNumber(){
     return Number(userNumber)
 }
 
-document.getElementById('submit').addEventListener('click', () => {
+document.getElementById('submit').addEventListener('click', async () => {
     const number = getUserNumber()
 
-    const data = attemptNumber(number);
+    const data = await attemptNumber(number);
     if (data) {
         const list = document.getElementById('attempts-list');
         const elementList = document.createElement('li')
