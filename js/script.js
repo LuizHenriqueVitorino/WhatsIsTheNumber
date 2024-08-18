@@ -10,7 +10,7 @@ const getNumber = async () => {
         });
 
         if (!response.ok) {
-            throw new Error('HTTP error! status: ${response.status}')
+            throw new Error(`HTTP error! status: ${response.status}`)
         }
 
         const data = await response.json();
@@ -44,17 +44,14 @@ async function attemptNumber(number) {
 }
 
 function getUserNumber(){
-    let userNumber = document.getElementById('attempt-input').value;
-    return userNumber
+    const userNumber = document.getElementById('attempt-input').value;
+    return Number(userNumber)
 }
 
-document.getElementById('submit').addEventListener('click', async () => {
-    const numberStr = await getUserNumber();
-    const number = parseInt(numberStr, 10)
+document.getElementById('submit').addEventListener('click', () => {
+    const number = getUserNumber()
 
     const data = attemptNumber(number);
-    console.log(number)
-    console.log(data.resolve(value))
     if (data) {
         let list = document.getElementById('attempts-list');
         let elementList = document.createElement('li')
