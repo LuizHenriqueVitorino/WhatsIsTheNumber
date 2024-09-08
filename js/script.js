@@ -1,8 +1,10 @@
-const getNumber = async () => {
+getNumber()
+
+async function getNumber() {
     try{
         const response = await
         fetch(
-            'http://192.168.0.100:5000/generate', {
+            'http://localhost:5000/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -10,20 +12,20 @@ const getNumber = async () => {
         });
 
         if (!response.ok) {
-            throw new Error('HTTP error! status: ${response.status}')
+            throw new Error(`HTTP error! status: ${response.status}`)
         }
 
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error("Erro ao buscar número:", error);
+        console.error(await response.json());
         return null;
     };
 }
 
 async function attemptNumber(number) {
     try {
-        const response = await fetch('http://192.168.0.100:5000/check', {
+        const response = await fetch('http://localhost:5000/check', {
             method: 'POST',
             body: JSON.stringify({ "number": number }),
             headers: {
@@ -38,26 +40,23 @@ async function attemptNumber(number) {
         const data = await response.json();
         return data.message;
     } catch (error) {
-        console.error("Erro ao tentar número:", error);
+        console.error(await response.json())
         return null;
     }
 }
 
 function getUserNumber(){
-    let userNumber = document.getElementById('attempt-input').value;
-    return userNumber
+    const userNumber = document.getElementById('attempt-input').value;
+    return Number(userNumber)
 }
 
 document.getElementById('submit').addEventListener('click', async () => {
-    const numberStr = await getUserNumber();
-    const number = parseInt(numberStr, 10)
+    const number = getUserNumber()
 
-    const data = attemptNumber(number);
-    console.log(number)
-    console.log(data.resolve(value))
+    const data = await attemptNumber(number);
     if (data) {
-        let list = document.getElementById('attempts-list');
-        let elementList = document.createElement('li')
+        const list = document.getElementById('attempts-list');
+        const elementList = document.createElement('li')
         elementList.textContent = data
         list.insertBefore(elementList, list.firstChild)
     } else {
